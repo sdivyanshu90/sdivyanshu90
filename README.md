@@ -1,9 +1,8 @@
 <div align="center">
-  
   <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=700&size=28&pause=1000&color=FF6C37&center=true&width=435&lines=ML+Engineer;AI+Researcher;Quant+Developer;Full-Stack+Creator;1400%2B+Problems+Solver;Open-Source+Contributor" alt="Header Typing SVG" />
-  
+</div>
   <h3>🔥 "Where algorithms meet ambition, I build bridges between data and destiny" 🔥<h3/>
-  
+
   <p align="center">
     <a href = "mailto:divyanshu74.80@gmail.com"><img src="https://img.shields.io/badge/-EMAIL-EA4335?style=flat-square&logo=gmail&logoColor=white"/></a>
     <a href = "https://www.linkedin.com/in/divsha22/"><img src="https://img.shields.io/badge/-LINKEDIN-0A66C2?style=flat-square&logo=linkedin&logoColor=white"/></a>
@@ -11,8 +10,6 @@
     <a href = "https://leetcode.com/u/emotional_fool/"><img src="https://img.shields.io/badge/-LEETCODE-FFA116?style=flat-square&logo=leetcode&logoColor=black"/></a>
     <a href = "https://www.kaggle.com/divanshu22"><img src="https://img.shields.io/badge/-KAGGLE-20BEFF?style=flat-square&logo=kaggle&logoColor=white"/></a>
   </p>
-</div>
-
 
 ----
 
@@ -51,6 +48,7 @@ ML Solutions for Particle Physics Challenges
 <a href = ""><img src="https://img.shields.io/badge/ResNet-000080?style=flat"/></a>
 <a href = ""><img src="https://img.shields.io/badge/GNN-FF4088?style=flat"/></a>
 
+
 > Solved 3 ML tasks for CMS: particle classification with CNNs and momentum regression with GNNs
 
 <h3>🔬 <a href="https://github.com/sdivyanshu90/BioMed-Retrieval">BioMed-Retrieval</a></h3>
@@ -59,6 +57,7 @@ Biomedical Q&A using RAG & LLMs
 <a href = ""><img src="https://img.shields.io/badge/RAG-8A2BE2?style=flat"/></a>
 <a href = ""><img src="https://img.shields.io/badge/PubMedBERT-009688?style=flat"/></a>
 
+
 > Combined PubMedBERT, Qdrant & BioMistral-7B to improve relevance by 30%
 
 <h3>💬 <a href="https://www.kaggle.com/code/divanshu22/next-word-prediction">NextWord Prediction</a></h3>
@@ -66,6 +65,7 @@ LSTM Next Word Prediction
 
 <a href = ""><img src="https://img.shields.io/badge/LSTM-FF9800?style=flat"/></a>
 <a href = ""><img src="https://img.shields.io/badge/RNN-9C27B0?style=flat"/></a>
+
 
 > 92% next-token accuracy on 580K+ sentences
 
@@ -76,8 +76,8 @@ LSTM Next Word Prediction
 
 <b>Research Consultant @ WorldQuant BRAIN</b> (2022-Present) 
 
-- Created "SuperAlphas" ensemble boosting portfolio performance
-- Backtested on 10+ years of tick-level financial data
+* Created "SuperAlphas" ensemble boosting portfolio performance
+* Backtested on 10+ years of tick-level financial data
 
 ---
 

@@ -17,7 +17,7 @@
   </a>
 </p>
 
-----
+---
 
 <h2> 🚀 Technical Expertise</h2>
 

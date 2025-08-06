@@ -6,33 +6,36 @@
   
   <p align="center">
     <a href = "mailto:divyanshu74.80@gmail.com"><img src="https://img.shields.io/badge/-EMAIL-EA4335?style=flat-square&logo=gmail&logoColor=white"/></a>
-  <a href = "https://www.linkedin.com/in/divsha22/"><img src="https://img.shields.io/badge/-LINKEDIN-0A66C2?style=flat-square&logo=linkedin&logoColor=white"/></a>
-  <a href = "https://github.com/sdivyanshu90"><img src="[https://img.shields.io/badge/-EMAIL-EA4335?style=flat-square&logo=gmail&logoColor=white](https://img.shields.io/badge/-GITHUB-181717?style=flat-square&logo=github&logoColor=white)"/></a>
-  <a href = "https://leetcode.com/u/emotional_fool/"><img src="https://img.shields.io/badge/-LEETCODE-FFA116?style=flat-square&logo=leetcode&logoColor=black"/></a>
-  <a href = "https://www.kaggle.com/divanshu22"><img src="https://img.shields.io/badge/-KAGGLE-20BEFF?style=flat-square&logo=kaggle&logoColor=white"/></a>
+    <a href = "https://www.linkedin.com/in/divsha22/"><img src="https://img.shields.io/badge/-LINKEDIN-0A66C2?style=flat-square&logo=linkedin&logoColor=white"/></a>
+    <a href = "https://github.com/sdivyanshu90"><img src="[https://img.shields.io/badge/-EMAIL-EA4335?style=flat-square&logo=gmail&logoColor=white](https://img.shields.io/badge/-GITHUB-181717?style=flat-square&logo=github&logoColor=white)"/></a>
+    <a href = "https://leetcode.com/u/emotional_fool/"><img src="https://img.shields.io/badge/-LEETCODE-FFA116?style=flat-square&logo=leetcode&logoColor=black"/></a>
+    <a href = "https://www.kaggle.com/divanshu22"><img src="https://img.shields.io/badge/-KAGGLE-20BEFF?style=flat-square&logo=kaggle&logoColor=white"/></a>
   </p>
-  
 </div>
 
----
+
+----
 
 <h2> 🚀 Technical Expertise</h2>
 
-**AI/ML Frameworks:**  
+<b>AI/ML Frameworks:</b>  
 <a href = "https://pytorch.org/"><img src="https://img.shields.io/badge/PyTorch-EE4C2C?logo=pytorch&logoColor=white&style=flat"/></a>
 <a href = "https://www.tensorflow.org/"><img src="https://img.shields.io/badge/TensorFlow-FF6F00?logo=tensorflow&logoColor=white&style=flat"/></a>
 <a href = "https://huggingface.co/"><img src="https://img.shields.io/badge/HuggingFace-FFD21E?logo=huggingface&logoColor=black&style=flat"/></a>
 
-**LLM & Vector Search:**  
+<b>LLM & Vector Search:</b>
+
 <a href = "https://www.langchain.com/"><img src="https://img.shields.io/badge/LangChain-00A67E?style=flat&logo=langchain&logoColor=white"/></a>
 <a href = "https://qdrant.tech/"><img src="https://img.shields.io/badge/Qdrant-4B32C3?style=flat"/></a>
 <a href = ""><img src="https://img.shields.io/badge/RAG-8A2BE2?style=flat"/></a>
 
-**Quantitative Finance:**  
+<b>Quantitative Finance:</b>
+
 <a href = ""><img src="https://img.shields.io/badge/Backtesting-4CAF50?style=flat"/></a>
 <a href = ""><img src="https://img.shields.io/badge/Alpha_Modeling-009688?style=flat"/></a>
 
-**Languages:**  
+<b>Languages:</b>
+
 <a href = ""><img src="https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white&style=flat"/></a>
 <a href = ""><img src="https://img.shields.io/badge/Java-007396?logo=java&logoColor=white&style=flat"/></a>
 <a href = ""><img src="https://img.shields.io/badge/C++-00599C?logo=c%2B%2B&logoColor=white&style=flat"/></a>
@@ -68,9 +71,11 @@ LSTM Next Word Prediction
 
 ---
 
+
 <h2>💼 Professional Experience</h2>
 
-**Research Consultant @ WorldQuant BRAIN** (2022-Present)  
+<b>Research Consultant @ WorldQuant BRAIN</b> (2022-Present) 
+
 - Created "SuperAlphas" ensemble boosting portfolio performance
 - Backtested on 10+ years of tick-level financial data
 

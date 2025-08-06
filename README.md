@@ -10,7 +10,12 @@
     <a href = "https://leetcode.com/u/emotional_fool/"><img src="https://img.shields.io/badge/-LEETCODE-FFA116?style=flat-square&logo=leetcode&logoColor=black"/></a>
     <a href = "https://www.kaggle.com/divanshu22"><img src="https://img.shields.io/badge/-KAGGLE-20BEFF?style=flat-square&logo=kaggle&logoColor=white"/></a>
   </p>
-<br>
+
+<p align="center">
+  <a href="https://sdivyanshu90.github.io/sdivyanshu90/Divanshu_Resume.pdf">
+    <img src="https://img.shields.io/badge/ Download Resume-007ACC?style=for-the-badge&logo=github&logoColor=white" alt="Resume" />
+  </a>
+</p>
 
 ----
 
@@ -74,11 +79,11 @@ LSTM Next Word Prediction
 
 <h2>💼 Professional Experience</h2>
 
-<b>Research Consultant @ WorldQuant BRAIN</b> (2022-Present) 
-<br>
-* Created "SuperAlphas" ensemble boosting portfolio performance<br>
-* Backtested on 10+ years of tick-level financial data<br>
-
+<b>Research Consultant @ WorldQuant BRAIN</b> (2022 - Present) 
+<pre>
+  Created "SuperAlphas" ensemble boosting portfolio performance
+  Backtested on 10+ years of tick-level financial data
+</pre>
 ---
 
 <h2>📊 GitHub Stats</h2>

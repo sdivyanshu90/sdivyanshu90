@@ -48,6 +48,16 @@
 ---
 
 <h2>🌟 Featured Projects</h2>
+
+<h3>🎨 <a href="https://github.com/sdivyanshu90/my_portfolio">Gemini Dev Portfolio</a></h3>
+Modern AI-enhanced developer portfolio 
+<br>
+<a href = ""><img src="https://img.shields.io/badge/Next.js-15-blue"/></a>
+<a href = ""><img src="https://img.shields.io/badge/TypeScript-Strict-blue"/></a>
+<a href=""><img src="https://img.shields.io/badge/TailwindCSS-v3-38b2ac"/></a>
+<a href=""><img src="https://img.shields.io/badge/Google%20Gemini-8A2BE2"/></a>
+<br>
+
 <h3>⚛️ <a href="https://github.com/sdivyanshu90/ProblemPioneer">ProblemPioneer</a></h3>
 ML Solutions for Particle Physics Challenges
 <br>

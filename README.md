@@ -85,14 +85,26 @@ LSTM Next Word Prediction
 <br>
 
 > 92% next-token accuracy on 580K+ sentences<br>
+
+<h3>💬 <a href="https://github.com/sdivyanshu90/LeetCode-Solutions">LeetCode QUestions Solution</a></h3>
+LeetCode Problem Solutions
+<br>
+<a href = ""><img src="https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white&style=flat"/></a>
+<a href = ""><img src="https://img.shields.io/badge/Dynamic%20Programming-112-blue?style=flat&logo=appveyor"/></a>
+<a href = ""><img src="https://img.shields.io/badge/Graph%20Problems-50-green?style=flat&logo=appveyor"/></a>
+<a href = ""><img src="https://img.shields.io/badge/Arrays-120-red?style=flat&logo=appveyor"/></a>
+<a href = ""><img src="https://img.shields.io/badge/Strings-80-yellow?style=flat&logo=appveyor"/></a>
+<br>
+
+> Efficient and well-documented LeetCode solutions showcasing problem-solving skills across topics like Dynamic Programming, Graphs, and more.<br>
 ---
 
 <h2>💼 Professional Experience</h2>
 
-<b>Research Consultant @ WorldQuant BRAIN</b> (2022 - Present) 
+<b>Quantitative Research Consultant @ WorldQuant</b> (2022 - Present) 
 <pre>
-  Created "SuperAlphas" ensemble boosting portfolio performance
-  Backtested on 10+ years of tick-level financial data
+  Dynamic Research Consultant with deep expertise in advanced data analytics, market research, and competitive intelligence, providing actionable, high-impact insights that empower organizations to make informed, strategic decisions and drive sustainable business success.
+  Proven ability to translate complex data into clear, compelling narratives that influence stakeholders and shape strategic initiatives across diverse industries.
 </pre>
 ---
 

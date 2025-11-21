@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=700&size=28&pause=1000&color=2F80ED&center=true&width=600&lines=AI+Researcher+%26+Quant+Developer;Building+DL+Compilers+from+Scratch;1600%2B+Algorithmic+Problems+Solved;Open-Source+Contributor" alt="Header Typing SVG" />
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=700&size=28&pause=1000&color=2F80ED&center=true&width=600&lines=AI+Researcher+%26+ML+Researcher;Building+DL+Compilers+from+Scratch;1600%2B+Algorithmic+Problems+Solved;Open-Source+Contributor" alt="Header Typing SVG" />
 </div>
 
 <p align="center">
@@ -10,7 +10,7 @@
 </p>
 
 <div align="center">
-  <p><i>"Bridging the gap between <b>Theoretical Deep Learning</b>, <b>High-Performance Computing</b>, and <b>Quantitative Finance</b>."</i></p>
+  <p><i>"Bridging the gap between <b>Theoretical Deep Learning</b>, and <b>High-Performance Computing</b>."</i></p>
 </div>
 
 ---

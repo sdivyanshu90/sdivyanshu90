@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=700&size=28&pause=1000&color=2F80ED&center=true&width=600&lines=AI+Researcher+%26+ML+Researcher;Building+DL+Compilers+from+Scratch;1600%2B+Algorithmic+Problems+Solved;Open-Source+Contributor" alt="Header Typing SVG" />
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=700&size=28&pause=1000&color=2F80ED&center=true&width=600&lines=AI+Researcher+%26+ML+Researcher;Building+DL+Compilers+from+Scratch;Optimizing+ASR+%26+Speech+Pipelines;Open-Source+Contributor" alt="Header Typing SVG" />
 </div>
 
 <p align="center">

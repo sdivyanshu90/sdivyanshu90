@@ -129,7 +129,7 @@
 
 <h3><a href="">Indic ASR Optimization & Speech Processing Pipeline</a></h3>
 <br>
-<img src="https://img.shields.io/badge/Tech-Whisper_|Librosa|_Hugging Face-blue?style=flat-square"/>
+<img src="https://img.shields.io/badge/Tech-Whisper%20|%20Librosa%20|%20Hugging%20Face-FFD21E?style=flat-square"/>
 <blockquote>
   <ul>
     <li>Built an end-to-end Python pipeline to fine-tune Whisper-small transformer models on conversational Hindi audio.</li>

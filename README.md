@@ -35,7 +35,7 @@
       <i>Focus: Alpha Generation & Market Signals</i>
       <ul>
         <li>Developed and backtested <b>15+</b> high-frequency alpha signals using Python/Pandas, achieving an average Sharpe Ratio of <b>1.8</b> in simulation.</li>
-        <li>Ranked in the <b>Top 5%</b> of the Global Alphathon 2022, competing against 10,000+ quants worldwide.</li>
+        <li>Ranked in the <b>Top 5%</b> of the Global Alphathon 2022, competing against 20,000+ quants worldwide.</li>
       </ul>
     </td>
   </tr>
@@ -44,7 +44,6 @@
 ---
 
 <h2>Technical Arsenal</h2>
-
 <table>
   <tr>
     <td align="center" width="20%"><b>Core AI & Research</b></td>
@@ -56,18 +55,27 @@
     </td>
   </tr>
   <tr>
-    <td align="center"><b>MLOps & Deployment</b></td>
+    <td align="center"><b>Speech & Audio</b></td>
     <td>
-      <img src="https://img.shields.io/badge/FastAPI-Model_Serving-009688?style=flat-square&logo=fastapi&logoColor=white"/>
+      <img src="https://img.shields.io/badge/Librosa-Signal_Processing-E1432E?style=flat-square"/>
+      <img src="https://img.shields.io/badge/VAD-Voice_Activity_Detection-00A67E?style=flat-square"/>
+      <img src="https://img.shields.io/badge/ASR-Model_Evaluation_&_WER-4B32C3?style=flat-square"/>
     </td>
   </tr>
   <tr>
     <td align="center"><b>GenAI & NLP</b></td>
     <td>
       <img src="https://img.shields.io/badge/OpenAI-Whisper-000000?style=flat-square&logo=openai&logoColor=white"/>
-      <img src="https://img.shields.io/badge/HuggingFace-Transformers-FFD21E?style=flat-square&logo=huggingface&logoColor=black"/>
+      <img src="https://img.shields.io/badge/HuggingFace-Transformers_&_Datasets-FFD21E?style=flat-square&logo=huggingface&logoColor=black"/>
       <img src="https://img.shields.io/badge/LangChain-RAG_Architecture-00A67E?style=flat-square"/>
       <img src="https://img.shields.io/badge/Qdrant-Vector_Search-4B32C3?style=flat-square"/>
+      <img src="https://img.shields.io/badge/Indic_NLP-Text_Normalization-FF9900?style=flat-square"/>
+    </td>
+  </tr>
+  <tr>
+    <td align="center"><b>MLOps & Deployment</b></td>
+    <td>
+      <img src="https://img.shields.io/badge/FastAPI-Model_Serving-009688?style=flat-square&logo=fastapi&logoColor=white"/>
     </td>
   </tr>
   <tr>
@@ -77,6 +85,7 @@
       <img src="https://img.shields.io/badge/Pandas-150458?style=flat-square&logo=pandas&logoColor=white"/>
       <img src="https://img.shields.io/badge/Polars-High_Perf_Data-CD792C?style=flat-square&logo=polars&logoColor=white"/>
       <img src="https://img.shields.io/badge/CatBoost-Ensemble-green?style=flat-square"/>
+      <img src="https://img.shields.io/badge/Regex-Data_Cleaning-00599C?style=flat-square"/>
     </td>
   </tr>
   <tr>
@@ -117,6 +126,18 @@
     <li><b>Scoring:</b> Developed a <b>CatBoost</b> regressor with ensemble cross-validation to predict grammar scores with high correlation to human baselines.</li>
   </ul>
 </blockquote>
+
+<h3><a href="">Indic ASR Optimization & Speech Processing Pipeline</a></h3>
+<br>
+<img src="https://img.shields.io/badge/Tech-Whisper_|Librosa|_Hugging Face-blue?style=flat-square"/>
+<blockquote>
+  <ul>
+    <li>Built an end-to-end Python pipeline to fine-tune Whisper-small transformer models on conversational Hindi audio.</li>
+    <li>Developed a custom Devanagari text normalization engine with phonetic reverse-transliteration and automated acoustic segmentation (librosa + VAD) to handle loanwords and speech disfluencies.</li>
+    <li>Designed a word-level Confusion Network to evaluate accuracy against imperfect human transcripts using majority voting across five ASR model outputs.</li>
+  </ul>
+</blockquote>
+
 
 <h3><a href="https://github.com/sdivyanshu90/BioMed-Retrieval">BioMed-Retrieval (RAG System)</a></h3>
 <i>Biomedical Q&A utilizing Retrieval-Augmented Generation.</i>

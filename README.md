@@ -35,7 +35,8 @@
       <i>Focus: Alpha Generation & Market Signals</i>
       <ul>
         <li>Developed and backtested <b>15+</b> high-frequency alpha signals using Python/Pandas, achieving an average Sharpe Ratio of <b>1.8</b> in simulation.</li>
-        <li>Ranked in the <b>Top 5%</b> of the Global Alphathon 2022, competing against 20,000+ quants worldwide.</li>
+        <li>Ranked in the Top 1% globally (Gold Level) among thousands of participants in the WorldQuant
+BRAIN Global Alphathon 2022</li>
       </ul>
     </td>
   </tr>

@@ -1,43 +1,77 @@
 # Divanshu Sharma
 
-Applied AI / ML Systems Engineer working across LLM evaluation, model
-infrastructure, inference, retrieval, and reliability.
+**Applied AI / ML Systems Engineer** working across LLM evaluation,
+model infrastructure, inference, retrieval, and reliability.
 
-I'm currently a Founding Engineer at Uniiq.ai, where I work across AI
-workflows, backend systems, reliability, security, testing, and product
-performance.
+Currently a **Founding Engineer at Uniiq.ai**, where I work across AI
+workflows, backend systems, reliability, security, testing, infrastructure,
+and product performance.
+
+My public engineering work is split between an **AI Systems Lab** — where I
+implement the systems underneath modern AI from first principles — and
+**upstream open-source work** in established AI/ML codebases.
+
+---
 
 ## Open Source
 
 I contribute reliability and correctness fixes to open-source AI/ML
 infrastructure.
 
-**EleutherAI / lm-evaluation-harness**
-- Merged upstream fixes across cache handling, CLI parsing, and
-  evaluation/benchmark correctness.
-- Cache-path fix #4047 shipped in v0.4.13.
-- Additional work covers few-shot behavior, distributed results, cache
-  integrity, normalization, and CLI edge cases.
+### EleutherAI — `lm-evaluation-harness`
 
-**Mastra**
-- Reported correctness bugs across workflows, Editor state, evaluation
-  caches, processors, provider configuration, and CLI behavior.
-- Several reports progressed to pending-release / pending-close states.
-- One documentation contribution merged upstream.
+Merged/upstream work across areas including:
 
-**Experiential**
-- Active upstream fixes across AI gateway and provider reliability:
-  URL/path boundaries, hosted-origin validation, error contracts,
-  credential handling, pagination, packaging, and CLI behavior.
+- cache and filesystem reliability
+- CLI parsing semantics
+- evaluation and benchmark correctness
+- few-shot/evaluation behavior
+- distributed result handling
 
-**OpenCode**
-- Active bug-fix work across terminal/WebSocket behavior, Unicode and
-  encoding, filesystem portability, Git/branch validation, pagination,
-  caching, and client/server authentication.
+A cache-path fix I contributed in **PR #4047** was merged upstream and
+shipped in **v0.4.13**.
 
-**Sequre**
-- Privacy-preserving deep-learning work for Secure Multi-Party
-  Computation; submitted upstream CNN/Conv2D work in PR #42.
+### Mastra
+
+Bug investigation across agent/workflow execution, Editor state,
+evaluation/scorer caching, processor graphs, provider configuration,
+and CLI behavior.
+
+Several reported issues progressed into upstream resolution /
+pending-release states.
+
+### Experiential
+
+Active upstream work across AI gateway and provider reliability:
+
+- URL/path and browser-origin boundaries
+- shell-safe configuration output
+- stable API error contracts
+- provider pagination
+- package typing
+- credential and recovery behavior
+
+### OpenCode
+
+Active bug investigation and fixes across:
+
+- terminal/WebSocket behavior
+- Unicode and encoding boundaries
+- filesystem portability
+- Git/repository semantics
+- pagination and cache identity
+- authentication and URL handling
+
+### Earlier Open Source
+
+Earlier engineering contributions include work in the
+**p5.js Web Editor**, **VulnerableCode**, and **PyNN**, alongside
+scientific-ML work in the **ML4SCI ecosystem**.
+
+See [`OPEN_SOURCE.md`](./OPEN_SOURCE.md) for the contribution ledger
+and current upstream status of individual artifacts.
+
+---
 
 ## Selected Systems
 
@@ -47,14 +81,14 @@ distributed circuit breaking, rate limiting, semantic caching, cost
 tracking, and observability.
 
 ### Distributed Training
-LLaMA-style distributed training from raw PyTorch primitives using
-FSDP/ZeRO-3 and tensor parallelism, with sharded checkpoints,
-deterministic resume, correctness tests, and profiling.
+LLaMA-style distributed training from PyTorch primitives using FSDP/ZeRO-3
+and tensor parallelism, with sharded checkpoints, deterministic resume,
+correctness tests, and profiling.
 
 ### EvalForge
-From-scratch LLM evaluation harness covering datasets, provider
-abstraction, scoring, concurrent execution, crash-safe artifacts,
-reporting, and regression workflows.
+LLM evaluation harness covering dataset validation, provider abstraction,
+deterministic and model-based scorers, concurrent execution, crash-safe
+artifacts, reporting, and regression workflows.
 
 ### FromScratchQuant
 PyTorch quantization library implementing INT8, FP4, and NF4 from first
@@ -62,40 +96,48 @@ principles with calibration, serialization, numerical validation, and
 benchmarks.
 
 ### Code Interpreter
-Sandboxed untrusted-code execution service using isolated containers,
-seccomp, namespaces, cgroups, capability dropping, filesystem/network
-restrictions, and resource controls.
+Sandboxed execution service for untrusted code using isolated containers,
+namespaces, seccomp, cgroups, filesystem/network restrictions, and resource
+controls.
 
 ### Neural Bisect
-Checkpoint-level behavioral debugging for neural networks using
-representation analysis, activation interventions, training-data
-attribution, and counterfactual evidence.
+Behavioral debugging for neural networks across checkpoints using
+representation analysis, interventions, training-data attribution, and
+counterfactual evidence.
+
+---
 
 ## AI Systems Lab
 
-My broader systems work covers:
+I maintain a broader set of from-scratch/reference implementations covering:
 
-- model internals: SSM/Mamba, diffusion, small language models
-- training/alignment: PEFT, DPO, distributed training
-- inference: quantization, speculative decoding, ONNX serving
-- evaluation/debugging: EvalForge, Neural Bisect
-- retrieval/context: HNSW, Graph RAG, prompt caching
-- infrastructure/reliability: gateways, guardrails, secure execution
+**Model internals** — Transformers, SSM/Mamba, diffusion  
+**Training & alignment** — distributed training, PEFT, DPO  
+**Evaluation & debugging** — EvalForge, Neural Bisect  
+**Inference & efficiency** — quantization, ONNX serving, decoding  
+**Retrieval & context** — vector search, Graph RAG, prompt caching  
+**Infrastructure & reliability** — gateways, guardrails, secure execution
 
-The goal of these projects is to understand the abstractions underneath
-modern AI systems rather than only compose high-level APIs.
+The goal is to understand and validate the abstractions underneath modern
+AI systems rather than only compose high-level frameworks.
 
-## Research
+---
+
+## Privacy-Preserving ML
 
 Worked on privacy-preserving deep learning through an AI Pioneers
-open-source research collaboration mentored by Yale researchers Haris
-Smajlović and Claus Horn.
+open-source research collaboration mentored by Yale researchers
+Haris Smajlović and Claus Horn.
 
-The work focused on adapting CNN operations for Secure Multi-Party
-Computation in Sequre, including CNN components and an end-to-end
+The work focused on adapting CNN components for Secure Multi-Party
+Computation in the Sequre ecosystem and building an end-to-end
 ChestMNIST training workflow.
+
+---
 
 ## Current Focus
 
-LLM evaluation · AI infrastructure · model inference · ML systems ·
-retrieval · reliability · privacy-preserving ML
+**LLM evaluation · AI infrastructure · model inference · ML systems ·
+retrieval · reliability · privacy-preserving ML**
+
+Portfolio: https://div90.vercel.app/

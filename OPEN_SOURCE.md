@@ -1,20 +1,20 @@
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="./assets/flight-recorder-dark.svg">
-  <source media="(prefers-color-scheme: light)" srcset="./assets/flight-recorder-light.svg">
-  <img alt="Open Source Black Box — a flight recorder from reproduced fault to upstream outcome" src="./assets/flight-recorder-light.svg" width="100%">
+  <source media="(prefers-color-scheme: dark)" srcset="./assets/conservation-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="./assets/conservation-light.svg">
+  <img alt="The Conservation Lab — restoring broken invariants in public while preserving provenance" src="./assets/conservation-light.svg" width="100%">
 </picture>
 
 <p align="center">
-  <a href="./README.md"><strong>Return to the observatory</strong></a>
+  <a href="./README.md"><strong>Return to the museum</strong></a>
   &nbsp;·&nbsp;
   <a href="https://github.com/pulls?q=is%3Apr+author%3Asdivyanshu90"><strong>All authored pull requests</strong></a>
   &nbsp;·&nbsp;
   <a href="https://github.com/issues?q=is%3Aissue+author%3Asdivyanshu90"><strong>All reported faults</strong></a>
 </p>
 
-Every entry records four things: **the invariant, the failure, the implementation, and the upstream outcome**. The recurring work is boundary correctness—finding what gets lost when data crosses a cache, process, provider, filesystem, protocol, or trust boundary.
+The Conservation Lab holds the seams behind the public collection. Every record preserves four things: **the invariant, the failure, the authored implementation, and the upstream outcome**. The recurring work is boundary correctness—finding what gets lost when data crosses a cache, process, provider, filesystem, protocol, or trust boundary.
 
-## Recorder protocol
+## Conservation protocol
 
 GitHub's merge flag records which commit entered a branch. This archive also records who reproduced the fault and authored the submitted implementation.
 
@@ -27,11 +27,11 @@ GitHub's merge flag records which commit entered a branch. This archive also rec
 | `ACTIVE` | My issue or implementation remains open upstream |
 | `RESEARCH` | Experimental or research engineering with an upstream artifact in progress |
 
-> **Authorship rule:** automated closure does not erase the reproduced bug, implementation, tests, or engineering work in the linked PR. When an equivalent maintainer- or bot-authored change carries the result forward, `AUTHOR` and `SHIP ACTOR` are recorded as separate facts.
+> **Provenance rule:** automated closure does not erase the reproduced bug, implementation, tests, or engineering work in the linked PR. When an equivalent maintainer- or bot-authored change carries the result forward, `AUTHOR` and `SHIP ACTOR` are recorded as separate facts.
 
-## Case files
+## Restoration records
 
-### `BR-001` · A cache path that existed only in theory
+### `OBJECT 001` · A cache path that existed only in theory
 
 | Channel | Record |
 |:--|:--|
@@ -40,7 +40,7 @@ GitHub's merge flag records which commit entered a branch. This archive also rec
 | Implementation | [EleutherAI/lm-evaluation-harness #4047](https://github.com/EleutherAI/lm-evaluation-harness/pull/4047) |
 | Outcome | `RELEASED` in [v0.4.13](https://github.com/EleutherAI/lm-evaluation-harness/releases/tag/v0.4.13) |
 
-### `BR-002` · Logs that disappeared during shutdown
+### `OBJECT 002` · Logs that disappeared during shutdown
 
 | Channel | Record |
 |:--|:--|
@@ -49,7 +49,7 @@ GitHub's merge flag records which commit entered a branch. This archive also rec
 | Implementations | [#26174 — drain on destroy](https://github.com/mastra-ai/mastra/pull/26174) · [#26173 — paginated queries](https://github.com/mastra-ai/mastra/pull/26173) |
 | Outcome | Both authored fixes `MERGED` upstream |
 
-### `BR-003` · Provider discovery stopped at page one
+### `OBJECT 003` · Provider discovery stopped at page one
 
 | Channel | Record |
 |:--|:--|
@@ -58,7 +58,7 @@ GitHub's merge flag records which commit entered a branch. This archive also rec
 | Implementations | [#1056 — Anthropic pagination](https://github.com/experientiallabs/experiential/pull/1056) · [#867 — Gemini page tokens](https://github.com/experientiallabs/experiential/pull/867) |
 | Outcome | Both authored fixes `MERGED` upstream |
 
-### `BR-004` · Bytes crossed a text boundary
+### `OBJECT 004` · Bytes crossed a text boundary
 
 | Channel | Record |
 |:--|:--|
@@ -67,7 +67,7 @@ GitHub's merge flag records which commit entered a branch. This archive also rec
 | Implementation | [Zulip #40241](https://github.com/zulip/zulip/pull/40241) |
 | Outcome | Authored fix `MERGED` upstream |
 
-## Fault taxonomy
+## Damage taxonomy
 
 | Boundary | Invariant under test | Representative evidence |
 |:--|:--|:--|
@@ -78,9 +78,9 @@ GitHub's merge flag records which commit entered a branch. This archive also rec
 | Trust | Credentials, origins, and execution remain inside their intended boundary | [Experiential #1031](https://github.com/experientiallabs/experiential/issues/1031) → [#1032](https://github.com/experientiallabs/experiential/pull/1032) · [#1153](https://github.com/experientiallabs/experiential/issues/1153) → [#1154](https://github.com/experientiallabs/experiential/pull/1154) |
 | Scale | Aggregation, buffering, and distributed state stay bounded and deterministic | [lm-eval #4322](https://github.com/EleutherAI/lm-evaluation-harness/issues/4322) → [#4324](https://github.com/EleutherAI/lm-evaluation-harness/pull/4324) · [Mastra #25914](https://github.com/mastra-ai/mastra/pull/25914) |
 
-## Active signal board
+## Objects under active conservation
 
-These artifacts were open at recorder sync on **2026-10-09**.
+These artifacts were open at catalogue sync on **2026-10-09**.
 
 | System | Current authored work | State |
 |:--|:--|:--|
@@ -90,7 +90,7 @@ These artifacts were open at recorder sync on **2026-10-09**.
 | Monid | [#105 preserve null consolidated output](https://github.com/monid-ai/monid/pull/105) | `ACTIVE` |
 | Sequre | [#42 pooling refactor and missing-file restoration](https://github.com/0xTCG/sequre/pull/42) | `RESEARCH` |
 
-## Authored implementation ledger
+## Collection provenance
 
 ### Mastra · agent infrastructure, codemods, and logging
 
@@ -121,7 +121,7 @@ The following are also my authored implementations. Automated repository policy 
 
 Closed PRs in these repositories remain linked as authored implementations when closure came from automation, contribution policy, supersession, or another non-technical path. Upstream merge status is recorded separately wherever applicable.
 
-## Earlier tracks
+## Earlier acquisitions
 
 | Ecosystem | Selected authored artifacts | Signal |
 |:--|:--|:--|
@@ -130,7 +130,7 @@ Closed PRs in these repositories remain linked as authored implementations when 
 | NeuralEnsemble · PyNN | [#813](https://github.com/NeuralEnsemble/PyNN/pull/813) | Scientific documentation interface · `MERGED` |
 | ML4SCI | Electron/photon classification · quark/gluon classification · graph-based detector experiments | Scientific ML research track |
 
-## Operating sequence
+## Conservation method
 
 ```text
 OBSERVE    Find the behavior that violates the system's implied contract.
@@ -140,5 +140,5 @@ VERIFY     Track the engineering outcome independently from repository process.
 ```
 
 <p align="center">
-  <sub><code>RECORDER SYNC · 2026-10-09 · END OF CAPTURE</code></sub>
+  <sub><code>CATALOGUE SYNC · 2026-10-09 · CONSERVATION RECORD COMPLETE</code></sub>
 </p>

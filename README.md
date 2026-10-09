@@ -1,49 +1,141 @@
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="./assets/observatory-dark.svg">
-  <source media="(prefers-color-scheme: light)" srcset="./assets/observatory-light.svg">
-  <img alt="DIV/90 AI Systems Observatory — Applied AI and ML systems engineering centered on reliability" src="./assets/observatory-light.svg" width="100%">
+  <source media="(prefers-color-scheme: dark)" srcset="./assets/incident-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="./assets/incident-light.svg">
+  <img alt="Incident 90 — The model worked, then reality happened" src="./assets/incident-light.svg" width="100%">
 </picture>
 
 <p align="center">
-  <a href="https://div90.vercel.app/"><strong>Portfolio</strong></a>
-  &nbsp;·&nbsp;
-  <a href="#the-boundary-atlas"><strong>Fault atlas</strong></a>
-  &nbsp;·&nbsp;
-  <a href="./OPEN_SOURCE.md"><strong>Open-source log</strong></a>
-  &nbsp;·&nbsp;
-  <a href="./Divanshu_Resume.pdf"><strong>Résumé</strong></a>
+  <strong>Divanshu Sharma</strong><br>
+  <sub>Applied AI / ML Systems Engineer · Founding Engineer at Uniiq.ai</sub>
 </p>
 
-I am an **Applied AI / ML Systems Engineer** and **Founding Engineer at Uniiq.ai**. I work where model behavior meets production constraints: evaluation, inference, routing, retrieval, security, observability, and the failure modes between them.
+<p align="center">
+  <a href="#-start_the_incident"><strong>▶ Start incident</strong></a>
+  &nbsp;·&nbsp;
+  <a href="#-reconstruct_the_system"><strong>Reconstruct system</strong></a>
+  &nbsp;·&nbsp;
+  <a href="./OPEN_SOURCE.md"><strong>Open black box</strong></a>
+  &nbsp;·&nbsp;
+  <a href="https://div90.vercel.app/"><strong>Exit to portfolio</strong></a>
+</p>
 
-My public work has two tracks: building the machinery underneath modern AI from first principles, and fixing correctness and reliability problems in established open-source systems.
+<!-- You found the maintenance hatch before starting the incident. That instinct is useful. -->
 
-## Route a failure
+## `> start_the_incident`
 
-Start with what broke. Each route leads to a system built to investigate or contain that class of failure.
+At 02:17, the model passed its benchmark and failed in production. A value crossed a boundary. Something about its identity, timing, encoding, state, scale, or trust was lost.
 
-| Signal | Route | What the system does |
-|:--|:--|:--|
-| `MODEL OUTPUT IS WRONG` | [**EvalForge**](https://github.com/sdivyanshu90/EvalForge) | Reproducible evaluations, deterministic and model-based scorers, regression workflows |
-| `MODEL BEHAVIOR CHANGED` | [**Neural Bisect**](https://github.com/sdivyanshu90/neural-bisect) | Traces checkpoint changes through representations, interventions, and training-data attribution |
-| `INFERENCE COST IS TOO HIGH` | [**FromScratchQuant**](https://github.com/sdivyanshu90/FromScratchQuant) | Implements and validates INT8, FP4, and NF4 quantization from first principles |
-| `A PROVIDER WENT DOWN` | [**AI Gateway**](https://github.com/sdivyanshu90/build-your-own-ai-gateway) | Routes across providers with failover, circuit breaking, rate limits, caching, and observability |
-| `TRAINING WILL NOT SCALE` | [**Distributed Training**](https://github.com/sdivyanshu90/build-your-own-distributed-training) | Builds FSDP/ZeRO-3 and tensor parallelism from PyTorch primitives with deterministic resume |
-| `THE CODE CANNOT BE TRUSTED` | [**Code Interpreter**](https://github.com/sdivyanshu90/build-your-own-code-interpreter) | Contains untrusted execution with namespaces, seccomp, cgroups, and filesystem/network controls |
+```console
+$ div90 trace --incident production --follow
+[signal] abstraction leakage detected
+[scope ] model ↔ infrastructure ↔ user
+[action] choose the first broken invariant
+```
 
-## One reliability loop
+Pick the symptom. Each panel opens a diagnostic route through a real system.
 
-These are connected parts of one program: create the model, make it efficient, expose it reliably, measure it, explain regressions, and contain the code it produces.
+<details>
+<summary><kbd>TRACE 01</kbd> &nbsp; <strong>The model is confidently wrong</strong></summary>
+<br>
+
+**Boundary:** model output ↔ evaluator<br>
+**Lost signal:** reproducibility, scoring intent, or regression evidence<br>
+**Response:** validate datasets, isolate provider behavior, run deterministic and model-based scorers, preserve crash-safe artifacts.
+
+[`ROUTE → EVALFORGE`](https://github.com/sdivyanshu90/EvalForge)
+
+</details>
+
+<details>
+<summary><kbd>TRACE 02</kbd> &nbsp; <strong>The model changed, but the metric cannot explain why</strong></summary>
+<br>
+
+**Boundary:** checkpoint ↔ behavior<br>
+**Lost signal:** the representation, mechanism, or training example that moved<br>
+**Response:** bisect checkpoints, compare representations, intervene on mechanisms, and trace influential training data.
+
+[`ROUTE → NEURAL BISECT`](https://github.com/sdivyanshu90/neural-bisect)
+
+</details>
+
+<details>
+<summary><kbd>TRACE 03</kbd> &nbsp; <strong>Inference works, but the economics do not</strong></summary>
+<br>
+
+**Boundary:** floating-point model ↔ deployable representation<br>
+**Lost signal:** numerical fidelity under compression<br>
+**Response:** implement INT8, FP4, and NF4 from first principles; calibrate, serialize, test, and benchmark the error.
+
+[`ROUTE → FROM-SCRATCH QUANTIZATION`](https://github.com/sdivyanshu90/FromScratchQuant)
+
+</details>
+
+<details>
+<summary><kbd>TRACE 04</kbd> &nbsp; <strong>The provider disappeared halfway through the request</strong></summary>
+<br>
+
+**Boundary:** application ↔ provider fleet<br>
+**Lost signal:** availability, rate state, cache identity, or cost visibility<br>
+**Response:** route, fail over, break unhealthy circuits, enforce limits, cache semantically, and emit observable decisions.
+
+[`ROUTE → AI GATEWAY`](https://github.com/sdivyanshu90/build-your-own-ai-gateway)
+
+</details>
+
+<details>
+<summary><kbd>TRACE 05</kbd> &nbsp; <strong>The model trains on one device and collapses across many</strong></summary>
+<br>
+
+**Boundary:** local state ↔ distributed state<br>
+**Lost signal:** parameter ownership, ordering, or deterministic recovery<br>
+**Response:** build FSDP/ZeRO-3 and tensor parallelism from PyTorch primitives with sharded checkpoints and exact resume behavior.
+
+[`ROUTE → DISTRIBUTED TRAINING`](https://github.com/sdivyanshu90/build-your-own-distributed-training)
+
+</details>
+
+<details>
+<summary><kbd>TRACE 06</kbd> &nbsp; <strong>The generated code must run, but must not be trusted</strong></summary>
+<br>
+
+**Boundary:** untrusted program ↔ host system<br>
+**Lost signal:** authority over processes, files, networks, and resources<br>
+**Response:** contain execution with isolated containers, namespaces, seccomp, cgroups, queues, and explicit filesystem/network policy.
+
+[`ROUTE → CODE INTERPRETER`](https://github.com/sdivyanshu90/build-your-own-code-interpreter)
+
+</details>
+
+## `> reconstruct_the_system`
+
+The six routes are parts of one machine. Create the model, compress it, expose it, measure it, explain it, and contain what it produces.
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="./assets/signal-path-dark.svg">
   <source media="(prefers-color-scheme: light)" srcset="./assets/signal-path-light.svg">
-  <img alt="System map connecting distributed training, quantization, an AI gateway, evaluation, neural debugging, and secure code execution" src="./assets/signal-path-light.svg" width="100%">
+  <img alt="A reliability loop connecting distributed training, quantization, routing, evaluation, neural debugging, and secure execution" src="./assets/signal-path-light.svg" width="100%">
 </picture>
 
-## The boundary atlas
+<details>
+<summary><code>load lab manifest</code></summary>
+<br>
 
-The same failure families recur across model infrastructure, developer tools, and distributed systems. A value crosses a boundary; identity, time, encoding, trust, scale, or state gets distorted along the way.
+```text
+MODEL INTERNALS       Transformers · SSM/Mamba · diffusion
+TRAINING & ALIGNMENT  distributed training · PEFT · DPO
+EVALUATION & DEBUG    EvalForge · Neural Bisect
+INFERENCE             quantization · ONNX serving · decoding
+RETRIEVAL             vector search · Graph RAG · prompt caching
+INFRASTRUCTURE        gateways · guardrails · secure execution
+```
+
+The lab exists to test the abstractions underneath modern AI systems from first principles.
+
+</details>
+
+## `> inspect_the_fault_atlas`
+
+Different codebases keep producing the same six classes of failure. The syntax changes; the boundary does not.
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="./assets/boundary-atlas-dark.svg">
@@ -51,54 +143,52 @@ The same failure families recur across model infrastructure, developer tools, an
   <img alt="Boundary Atlas showing identity, time, encoding, trust, scale, and state as recurring sources of system failures" src="./assets/boundary-atlas-light.svg" width="100%">
 </picture>
 
-This is the thread connecting cache correctness, retry semantics, Unicode handling, pagination, shutdown behavior, deterministic resume, and secure execution: **understand what crossed the boundary, then account for what was lost.**
+My open-source work follows this question across LLM evaluation, agent infrastructure, gateways, terminals, filesystems, Unicode, retries, pagination, logging, security, and distributed state:
+
+> **What crossed the boundary—and what did the abstraction forget to carry with it?**
+
+## `> open_the_black_box`
+
+```text
+RECORDER CHANNELS
+CH01  EVALUATION       EleutherAI / lm-evaluation-harness
+CH02  AGENT SYSTEMS    Mastra / OpenCode / Monid
+CH03  GATEWAYS         Experiential
+CH04  SECURITY         Zulip / Sequre
+
+RECORD FORMAT          invariant → fault → implementation → outcome
+AUTHORSHIP MODE        implementation author ≠ final merge actor
+```
+
+The recorder preserves released fixes, merged patches, active investigations, and complete implementations closed by automated triage or contribution-process rules.
+
+### [ENTER THE OPEN-SOURCE BLACK BOX →](./OPEN_SOURCE.md)
+
+## `> identify_operator`
+
+I’m **Divanshu Sharma**, an Applied AI / ML Systems Engineer and Founding Engineer at **Uniiq.ai**. I work across AI workflows, backend systems, evaluation, inference, reliability, security, infrastructure, and product performance.
+
+I like the moment when a clean abstraction meets a messy production system. That seam usually contains the real problem.
+
+[`PORTFOLIO`](https://div90.vercel.app/) &nbsp;·&nbsp; [`RÉSUMÉ`](./Divanshu_Resume.pdf) &nbsp;·&nbsp; [`OPEN-SOURCE RECORD`](./OPEN_SOURCE.md)
 
 <details>
-<summary><strong>Open the lab manifest</strong></summary>
+<summary><code>maintenance hatch // open carefully</code></summary>
 <br>
 
-| Layer | Reference implementations |
-|:--|:--|
-| Model internals | Transformers · SSM/Mamba · diffusion |
-| Training and alignment | Distributed training · PEFT · DPO |
-| Evaluation and debugging | EvalForge · Neural Bisect |
-| Inference and efficiency | Quantization · ONNX serving · decoding |
-| Retrieval and context | Vector search · Graph RAG · prompt caching |
-| Infrastructure and safety | Gateways · guardrails · secure execution |
+```text
+A cache key is an identity decision.
+A retry policy is a promise about time.
+A parser is a trust boundary.
+A pagination token is distributed state.
+A shutdown hook is a data-loss policy.
+A benchmark is only as honest as its failure modes.
+```
 
-The point of the lab is to test the abstractions underneath AI systems, not merely compose high-level frameworks.
+If one of those sentences sounds obvious, the bug is probably hiding one layer lower.
 
 </details>
 
-## Upstream flight recorder
-
-I contribute reliability and correctness fixes to AI/ML infrastructure. A few verified signals:
-
-| Event | Fault line | Outcome |
-|:--|:--|:--|
-| [EleutherAI #4047](https://github.com/EleutherAI/lm-evaluation-harness/pull/4047) | Request-cache parent directories were not created reliably | `RELEASED` in [v0.4.13](https://github.com/EleutherAI/lm-evaluation-harness/releases/tag/v0.4.13) |
-| [EleutherAI #4144](https://github.com/EleutherAI/lm-evaluation-harness/pull/4144) · [#4136](https://github.com/EleutherAI/lm-evaluation-harness/pull/4136) | CLI parsing lost valid braces and signed integer types | `MERGED` upstream |
-| [Mastra #26173](https://github.com/mastra-ai/mastra/pull/26173) · [#26174](https://github.com/mastra-ai/mastra/pull/26174) | Upstash log queries and shutdown could lose reliability under load | `MERGED` upstream |
-| [Experiential #1056](https://github.com/experientiallabs/experiential/pull/1056) · [#867](https://github.com/experientiallabs/experiential/pull/867) | Provider discovery silently stopped at pagination boundaries | `MERGED` upstream |
-| [Zulip #40241](https://github.com/zulip/zulip/pull/40241) | Non-UTF-8 temporary access tokens escaped as server errors | `MERGED` upstream |
-
-The recorder tracks **implementation authorship separately from merge attribution**. That includes complete fixes closed by automated triage or contribution-process rules, including Mastra patches later carried through upstream automation.
-
-Active investigations and fixes span [EleutherAI](https://github.com/EleutherAI/lm-evaluation-harness), [Mastra](https://github.com/mastra-ai/mastra), [Experiential](https://github.com/experientiallabs/experiential), and [OpenCode](https://github.com/anomalyco/opencode). The [open-source log](./OPEN_SOURCE.md) carries the longer record.
-
-## Current vector
-
-```text
-ROLE       Founding Engineer · Uniiq.ai
-BUILDING   AI workflows · backend systems · reliability · infrastructure
-STUDYING   LLM evaluation · inference · retrieval · model behavior
-RESEARCH   Privacy-preserving deep learning · secure multi-party computation
-```
-
-Earlier work includes privacy-preserving CNN components for the Sequre ecosystem, scientific ML in the ML4SCI community, and contributions to the p5.js Web Editor, VulnerableCode, and PyNN.
-
-> I like finding the boundary where a clean abstraction meets a messy production system—and making that boundary reliable.
-
 <p align="center">
-  <sub><code>DIV/90 · END TRANSMISSION</code></sub>
+  <sub><code>INCIDENT REMAINS OPEN · SYSTEMS KEEP CHANGING · OPERATOR STANDING BY</code></sub>
 </p>

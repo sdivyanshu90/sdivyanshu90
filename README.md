@@ -1,143 +1,86 @@
-# Divanshu Sharma
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="./assets/observatory-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="./assets/observatory-light.svg">
+  <img alt="DIV/90 AI Systems Observatory — Applied AI and ML systems engineering centered on reliability" src="./assets/observatory-light.svg" width="100%">
+</picture>
 
-**Applied AI / ML Systems Engineer** working across LLM evaluation,
-model infrastructure, inference, retrieval, and reliability.
+<p align="center">
+  <a href="https://div90.vercel.app/"><strong>Portfolio</strong></a>
+  &nbsp;·&nbsp;
+  <a href="./OPEN_SOURCE.md"><strong>Open-source log</strong></a>
+  &nbsp;·&nbsp;
+  <a href="./Divanshu_Resume.pdf"><strong>Résumé</strong></a>
+</p>
 
-Currently a **Founding Engineer at Uniiq.ai**, where I work across AI
-workflows, backend systems, reliability, security, testing, infrastructure,
-and product performance.
+I am an **Applied AI / ML Systems Engineer** and **Founding Engineer at Uniiq.ai**. I work where model behavior meets production constraints: evaluation, inference, routing, retrieval, security, observability, and the failure modes between them.
 
-My public engineering work is split between an **AI Systems Lab** — where I
-implement the systems underneath modern AI from first principles — and
-**upstream open-source work** in established AI/ML codebases.
+My public work has two tracks: building the machinery underneath modern AI from first principles, and fixing correctness and reliability problems in established open-source systems.
 
----
+## Route a failure
 
-## Open Source
+Start with what broke. Each route leads to a system built to investigate or contain that class of failure.
 
-I contribute reliability and correctness fixes to open-source AI/ML
-infrastructure.
+| Signal | Route | What the system does |
+|:--|:--|:--|
+| `MODEL OUTPUT IS WRONG` | [**EvalForge**](https://github.com/sdivyanshu90/EvalForge) | Reproducible evaluations, deterministic and model-based scorers, regression workflows |
+| `MODEL BEHAVIOR CHANGED` | [**Neural Bisect**](https://github.com/sdivyanshu90/neural-bisect) | Traces checkpoint changes through representations, interventions, and training-data attribution |
+| `INFERENCE COST IS TOO HIGH` | [**FromScratchQuant**](https://github.com/sdivyanshu90/FromScratchQuant) | Implements and validates INT8, FP4, and NF4 quantization from first principles |
+| `A PROVIDER WENT DOWN` | [**AI Gateway**](https://github.com/sdivyanshu90/build-your-own-ai-gateway) | Routes across providers with failover, circuit breaking, rate limits, caching, and observability |
+| `TRAINING WILL NOT SCALE` | [**Distributed Training**](https://github.com/sdivyanshu90/build-your-own-distributed-training) | Builds FSDP/ZeRO-3 and tensor parallelism from PyTorch primitives with deterministic resume |
+| `THE CODE CANNOT BE TRUSTED` | [**Code Interpreter**](https://github.com/sdivyanshu90/build-your-own-code-interpreter) | Contains untrusted execution with namespaces, seccomp, cgroups, and filesystem/network controls |
 
-### EleutherAI — `lm-evaluation-harness`
+## One reliability loop
 
-Merged/upstream work across areas including:
+These are connected parts of one program: create the model, make it efficient, expose it reliably, measure it, explain regressions, and contain the code it produces.
 
-- cache and filesystem reliability
-- CLI parsing semantics
-- evaluation and benchmark correctness
-- few-shot/evaluation behavior
-- distributed result handling
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="./assets/signal-path-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="./assets/signal-path-light.svg">
+  <img alt="System map connecting distributed training, quantization, an AI gateway, evaluation, neural debugging, and secure code execution" src="./assets/signal-path-light.svg" width="100%">
+</picture>
 
-A cache-path fix I contributed in **PR #4047** was merged upstream and
-shipped in **v0.4.13**.
+<details>
+<summary><strong>Open the lab manifest</strong></summary>
+<br>
 
-### Mastra
+| Layer | Reference implementations |
+|:--|:--|
+| Model internals | Transformers · SSM/Mamba · diffusion |
+| Training and alignment | Distributed training · PEFT · DPO |
+| Evaluation and debugging | EvalForge · Neural Bisect |
+| Inference and efficiency | Quantization · ONNX serving · decoding |
+| Retrieval and context | Vector search · Graph RAG · prompt caching |
+| Infrastructure and safety | Gateways · guardrails · secure execution |
 
-Bug investigation across agent/workflow execution, Editor state,
-evaluation/scorer caching, processor graphs, provider configuration,
-and CLI behavior.
+The point of the lab is to test the abstractions underneath AI systems, not merely compose high-level frameworks.
 
-Several reported issues progressed into upstream resolution /
-pending-release states.
+</details>
 
-### Experiential
+## Upstream flight recorder
 
-Active upstream work across AI gateway and provider reliability:
+I contribute reliability and correctness fixes to AI/ML infrastructure. A few verified signals:
 
-- URL/path and browser-origin boundaries
-- shell-safe configuration output
-- stable API error contracts
-- provider pagination
-- package typing
-- credential and recovery behavior
+| Event | Fault line | Outcome |
+|:--|:--|:--|
+| [EleutherAI #4047](https://github.com/EleutherAI/lm-evaluation-harness/pull/4047) | Request-cache parent directories were not created reliably | `RELEASED` in [v0.4.13](https://github.com/EleutherAI/lm-evaluation-harness/releases/tag/v0.4.13) |
+| [EleutherAI #4144](https://github.com/EleutherAI/lm-evaluation-harness/pull/4144) · [#4136](https://github.com/EleutherAI/lm-evaluation-harness/pull/4136) | CLI parsing lost valid braces and signed integer types | `MERGED` upstream |
+| [Mastra #26173](https://github.com/mastra-ai/mastra/pull/26173) · [#26174](https://github.com/mastra-ai/mastra/pull/26174) | Upstash log queries and shutdown could lose reliability under load | `MERGED` upstream |
 
-### OpenCode
+Active investigations and fixes span [EleutherAI](https://github.com/EleutherAI/lm-evaluation-harness), [Mastra](https://github.com/mastra-ai/mastra), [Experiential](https://github.com/experientiallabs/experiential), and [OpenCode](https://github.com/anomalyco/opencode). The [open-source log](./OPEN_SOURCE.md) carries the longer record.
 
-Active bug investigation and fixes across:
+## Current vector
 
-- terminal/WebSocket behavior
-- Unicode and encoding boundaries
-- filesystem portability
-- Git/repository semantics
-- pagination and cache identity
-- authentication and URL handling
+```text
+ROLE       Founding Engineer · Uniiq.ai
+BUILDING   AI workflows · backend systems · reliability · infrastructure
+STUDYING   LLM evaluation · inference · retrieval · model behavior
+RESEARCH   Privacy-preserving deep learning · secure multi-party computation
+```
 
-### Earlier Open Source
+Earlier work includes privacy-preserving CNN components for the Sequre ecosystem, scientific ML in the ML4SCI community, and contributions to the p5.js Web Editor, VulnerableCode, and PyNN.
 
-Earlier engineering contributions include work in the
-**p5.js Web Editor**, **VulnerableCode**, and **PyNN**, alongside
-scientific-ML work in the **ML4SCI ecosystem**.
+> I like finding the boundary where a clean abstraction meets a messy production system—and making that boundary reliable.
 
-See [`OPEN_SOURCE.md`](./OPEN_SOURCE.md) for the contribution ledger
-and current upstream status of individual artifacts.
-
----
-
-## Selected Systems
-
-### AI Gateway
-OpenAI-compatible multi-provider LLM gateway with routing, failover,
-distributed circuit breaking, rate limiting, semantic caching, cost
-tracking, and observability.
-
-### Distributed Training
-LLaMA-style distributed training from PyTorch primitives using FSDP/ZeRO-3
-and tensor parallelism, with sharded checkpoints, deterministic resume,
-correctness tests, and profiling.
-
-### EvalForge
-LLM evaluation harness covering dataset validation, provider abstraction,
-deterministic and model-based scorers, concurrent execution, crash-safe
-artifacts, reporting, and regression workflows.
-
-### FromScratchQuant
-PyTorch quantization library implementing INT8, FP4, and NF4 from first
-principles with calibration, serialization, numerical validation, and
-benchmarks.
-
-### Code Interpreter
-Sandboxed execution service for untrusted code using isolated containers,
-namespaces, seccomp, cgroups, filesystem/network restrictions, and resource
-controls.
-
-### Neural Bisect
-Behavioral debugging for neural networks across checkpoints using
-representation analysis, interventions, training-data attribution, and
-counterfactual evidence.
-
----
-
-## AI Systems Lab
-
-I maintain a broader set of from-scratch/reference implementations covering:
-
-**Model internals** — Transformers, SSM/Mamba, diffusion  
-**Training & alignment** — distributed training, PEFT, DPO  
-**Evaluation & debugging** — EvalForge, Neural Bisect  
-**Inference & efficiency** — quantization, ONNX serving, decoding  
-**Retrieval & context** — vector search, Graph RAG, prompt caching  
-**Infrastructure & reliability** — gateways, guardrails, secure execution
-
-The goal is to understand and validate the abstractions underneath modern
-AI systems rather than only compose high-level frameworks.
-
----
-
-## Privacy-Preserving ML
-
-Worked on privacy-preserving deep learning through an AI Pioneers
-open-source research collaboration mentored by Yale researchers
-Haris Smajlović and Claus Horn.
-
-The work focused on adapting CNN components for Secure Multi-Party
-Computation in the Sequre ecosystem and building an end-to-end
-ChestMNIST training workflow.
-
----
-
-## Current Focus
-
-**LLM evaluation · AI infrastructure · model inference · ML systems ·
-retrieval · reliability · privacy-preserving ML**
-
-Portfolio: https://div90.vercel.app/
+<p align="center">
+  <sub><code>DIV/90 · END TRANSMISSION</code></sub>
+</p>

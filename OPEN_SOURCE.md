@@ -1,139 +1,144 @@
-# Open-Source Engineering
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="./assets/flight-recorder-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="./assets/flight-recorder-light.svg">
+  <img alt="Open Source Black Box — a flight recorder from reproduced fault to upstream outcome" src="./assets/flight-recorder-light.svg" width="100%">
+</picture>
 
-I contribute to external software across AI/ML infrastructure, evaluation,
-agent tooling, security tooling, scientific computing, and developer
-platforms.
+<p align="center">
+  <a href="./README.md"><strong>Return to the observatory</strong></a>
+  &nbsp;·&nbsp;
+  <a href="https://github.com/pulls?q=is%3Apr+author%3Asdivyanshu90"><strong>All authored pull requests</strong></a>
+  &nbsp;·&nbsp;
+  <a href="https://github.com/issues?q=is%3Aissue+author%3Asdivyanshu90"><strong>All reported faults</strong></a>
+</p>
 
-Recent work focuses primarily on reliability and correctness in AI systems.
-Earlier contributions establish a longer history of working in external
-open-source codebases.
+Every entry records four things: **the invariant, the failure, the implementation, and the upstream outcome**. The recurring work is boundary correctness—finding what gets lost when data crosses a cache, process, provider, filesystem, protocol, or trust boundary.
 
-## Status Model
+## Recorder protocol
 
-- **Released** — merged upstream and included in an upstream release
-- **Merged** — accepted into upstream main
-- **Resolved upstream** — bug report resulted in an upstream resolution,
-  including fixes authored by another contributor
-- **Pending release** — upstream project indicates the fix is awaiting release
-- **Open PR** — implementation submitted and still under review
-- **Open issue** — reproduced/reported; no accepted fix yet
-- **Process closed** — implementation closed for contribution-process reasons
+GitHub's merge flag records which commit entered a branch. This archive also records who reproduced the fault and authored the submitted implementation.
 
----
+| Mark | Meaning |
+|:--|:--|
+| `RELEASED` | My authored patch was merged and included in an upstream release |
+| `MERGED` | My authored patch was accepted into the upstream default branch |
+| `UPSTREAM ADOPTED` | The reported failure was fixed upstream through a maintainer or automation path |
+| `AUTHORED FIX` | I submitted the implementation and regression coverage; repository process or automated triage closed that PR |
+| `ACTIVE` | My issue or implementation remains open upstream |
+| `RESEARCH` | Experimental or research engineering with an upstream artifact in progress |
 
-## Current AI / ML Infrastructure
+> **Authorship rule:** automated closure does not erase the reproduced bug, implementation, tests, or engineering work in the linked PR. When an equivalent maintainer- or bot-authored change carries the result forward, `AUTHOR` and `SHIP ACTOR` are recorded as separate facts.
 
-### EleutherAI / lm-evaluation-harness
+## Case files
 
-Focus: **LLM evaluation correctness and infrastructure**
+### `BR-001` · A cache path that existed only in theory
 
-Representative areas:
-- cache and filesystem behavior
-- CLI parsing
-- benchmark/task configuration
-- few-shot correctness
-- distributed result handling
-- multimodal cache behavior
-- metric / normalization edge cases
+| Channel | Record |
+|:--|:--|
+| Invariant | Enabling request caching must work when the configured parent directory does not yet exist |
+| Failure | Cache initialization reached the filesystem before creating the required parent path |
+| Implementation | [EleutherAI/lm-evaluation-harness #4047](https://github.com/EleutherAI/lm-evaluation-harness/pull/4047) |
+| Outcome | `RELEASED` in [v0.4.13](https://github.com/EleutherAI/lm-evaluation-harness/releases/tag/v0.4.13) |
 
-Highlighted contribution:
-**#4047 — cache parent-directory handling — Released in v0.4.13**
+### `BR-002` · Logs that disappeared during shutdown
 
-### Mastra
+| Channel | Record |
+|:--|:--|
+| Invariant | Destroying a transport must drain every queued batch; querying it must remain bounded by the requested page |
+| Faults | [Mastra #26171](https://github.com/mastra-ai/mastra/issues/26171) · [#26172](https://github.com/mastra-ai/mastra/issues/26172) |
+| Implementations | [#26174 — drain on destroy](https://github.com/mastra-ai/mastra/pull/26174) · [#26173 — paginated queries](https://github.com/mastra-ai/mastra/pull/26173) |
+| Outcome | Both authored fixes `MERGED` upstream |
 
-Focus: **agent/workflow and developer-platform correctness**
+### `BR-003` · Provider discovery stopped at page one
 
-Representative areas:
-- workflow state
-- Editor/workspace persistence
-- scorer caching
-- processor graphs
-- provider configuration
-- CLI correctness
+| Channel | Record |
+|:--|:--|
+| Invariant | Discovery must terminate when the provider says it is complete, not when the first response ends |
+| Fault | [Anthropic pagination stopped after the first page](https://github.com/experientiallabs/experiential/issues/1055) |
+| Implementations | [#1056 — Anthropic pagination](https://github.com/experientiallabs/experiential/pull/1056) · [#867 — Gemini page tokens](https://github.com/experientiallabs/experiential/pull/867) |
+| Outcome | Both authored fixes `MERGED` upstream |
 
-### Experiential
+### `BR-004` · Bytes crossed a text boundary
 
-Focus: **AI gateway/provider reliability**
+| Channel | Record |
+|:--|:--|
+| Invariant | Malformed temporary access tokens must fail as client input rather than escape as an HTTP 500 |
+| Fault | [Zulip #40239](https://github.com/zulip/zulip/issues/40239) |
+| Implementation | [Zulip #40241](https://github.com/zulip/zulip/pull/40241) |
+| Outcome | Authored fix `MERGED` upstream |
 
-Representative areas:
-- URL and path encoding
-- browser-origin validation
-- shell boundaries
-- stable control-plane errors
-- provider pagination
-- package typing
-- credential handling
+## Fault taxonomy
 
-### OpenCode
+| Boundary | Invariant under test | Representative evidence |
+|:--|:--|:--|
+| Identity | Equivalent values keep the same cache or workspace identity | [lm-eval #4321](https://github.com/EleutherAI/lm-evaluation-harness/issues/4321) → [#4323](https://github.com/EleutherAI/lm-evaluation-harness/pull/4323) |
+| Time | Retries preserve caller intent and finite exhaustion raises | [lm-eval #4201](https://github.com/EleutherAI/lm-evaluation-harness/issues/4201) → [#4202](https://github.com/EleutherAI/lm-evaluation-harness/pull/4202) · [Mastra #22622](https://github.com/mastra-ai/mastra/pull/22622) |
+| Encoding | Bytes, Unicode, and structured text survive representation changes | [Zulip #40241](https://github.com/zulip/zulip/pull/40241) · [OpenCode #49491](https://github.com/anomalyco/opencode/issues/49491) → [#49492](https://github.com/anomalyco/opencode/pull/49492) |
+| State | Pagination, cancellation, and shutdown have explicit terminal states | [Mastra #26173](https://github.com/mastra-ai/mastra/pull/26173) · [Experiential #1221](https://github.com/experientiallabs/experiential/pull/1221) |
+| Trust | Credentials, origins, and execution remain inside their intended boundary | [Experiential #1031](https://github.com/experientiallabs/experiential/issues/1031) → [#1032](https://github.com/experientiallabs/experiential/pull/1032) · [#1153](https://github.com/experientiallabs/experiential/issues/1153) → [#1154](https://github.com/experientiallabs/experiential/pull/1154) |
+| Scale | Aggregation, buffering, and distributed state stay bounded and deterministic | [lm-eval #4322](https://github.com/EleutherAI/lm-evaluation-harness/issues/4322) → [#4324](https://github.com/EleutherAI/lm-evaluation-harness/pull/4324) · [Mastra #25914](https://github.com/mastra-ai/mastra/pull/25914) |
 
-Focus: **developer-agent tooling and boundary correctness**
+## Active signal board
 
-Representative areas:
-- Unicode and byte boundaries
-- WebSocket/URL composition
-- filesystem portability
-- Git semantics
-- authentication
-- cache identity
-- pagination termination
+These artifacts were open at recorder sync on **2026-10-09**.
 
-### Sequre
+| System | Current authored work | State |
+|:--|:--|:--|
+| EleutherAI · lm-evaluation-harness | [#4341 deterministic Python task names](https://github.com/EleutherAI/lm-evaluation-harness/pull/4341) · [#4340 empty sample selection](https://github.com/EleutherAI/lm-evaluation-harness/pull/4340) | `ACTIVE` |
+| Experiential | [#1257 reject unserializable batch lines](https://github.com/experientiallabs/experiential/pull/1257) · [#1256 accurate lock contention](https://github.com/experientiallabs/experiential/pull/1256) | `ACTIVE` |
+| OpenCode | [#53484 workspace notice timing](https://github.com/anomalyco/opencode/pull/53484) · [#53483 wrapped hunk navigation](https://github.com/anomalyco/opencode/pull/53483) | `ACTIVE` |
+| Monid | [#105 preserve null consolidated output](https://github.com/monid-ai/monid/pull/105) | `ACTIVE` |
+| Sequre | [#42 pooling refactor and missing-file restoration](https://github.com/0xTCG/sequre/pull/42) | `RESEARCH` |
 
-Focus: **privacy-preserving ML**
+## Authored implementation ledger
 
-CNN / Conv2D and secure-training work for Secure Multi-Party Computation.
-Current upstream work includes PR #42.
+### Mastra · agent infrastructure, codemods, and logging
 
----
+Directly merged authored work includes [#26174](https://github.com/mastra-ai/mastra/pull/26174), [#26173](https://github.com/mastra-ai/mastra/pull/26173), [#25244](https://github.com/mastra-ai/mastra/pull/25244), [#25108](https://github.com/mastra-ai/mastra/pull/25108), [#25104](https://github.com/mastra-ai/mastra/pull/25104), [#24785](https://github.com/mastra-ai/mastra/pull/24785), [#24530](https://github.com/mastra-ai/mastra/pull/24530), [#24528](https://github.com/mastra-ai/mastra/pull/24528), [#24472](https://github.com/mastra-ai/mastra/pull/24472), [#24470](https://github.com/mastra-ai/mastra/pull/24470), [#24251](https://github.com/mastra-ai/mastra/pull/24251), [#22622](https://github.com/mastra-ai/mastra/pull/22622), and [#22534](https://github.com/mastra-ai/mastra/pull/22534).
 
-## Earlier Open-Source Engineering
+The following are also my authored implementations. Automated repository policy closed them while the linked issues were awaiting triage; that state describes the contribution process, not missing implementation:
 
-### Processing Foundation / p5.js Web Editor
+| Authored fix | Engineering surface | Recorded outcome |
+|:--|:--|:--|
+| [#26495](https://github.com/mastra-ai/mastra/pull/26495) · [#26494](https://github.com/mastra-ai/mastra/pull/26494) | Pino fallback suppression · bounded Upstash outage buffering | `AUTHORED FIX` · process-closed |
+| [#25915](https://github.com/mastra-ai/mastra/pull/25915) · [#25914](https://github.com/mastra-ai/mastra/pull/25914) | HTTP shutdown draining · bounded HTTP buffering | `AUTHORED FIX` · process-closed |
+| [#25874](https://github.com/mastra-ai/mastra/pull/25874) · [#25873](https://github.com/mastra-ai/mastra/pull/25873) | Streaming file queries · permanent retry classification | `AUTHORED FIX` · process-closed |
+| [#25679](https://github.com/mastra-ai/mastra/pull/25679) · [#25676](https://github.com/mastra-ai/mastra/pull/25676) | File write error propagation · directory-path rejection | `AUTHORED FIX` · process-closed |
+| [#25403](https://github.com/mastra-ai/mastra/pull/25403) · [#25398](https://github.com/mastra-ai/mastra/pull/25398) | Malformed log isolation · correct Upstash trimming | `AUTHORED FIX` · process-closed |
+| [#25250](https://github.com/mastra-ai/mastra/pull/25250) · [#24781](https://github.com/mastra-ai/mastra/pull/24781) | Retry-option preservation · codemod failure reporting | `AUTHORED FIX` · process-closed |
 
-Frontend and product-engineering contributions to a mature open-source
-creative-coding application.
+[Inspect every Mastra PR I authored →](https://github.com/mastra-ai/mastra/pulls?q=is%3Apr+author%3Asdivyanshu90)
 
-Areas included editor/UI behavior, responsive workflows, browser behavior,
-and developer/user experience.
+### Other current upstreams
 
-### AboutCode / VulnerableCode
+| Project | Authored engineering record | Full trace |
+|:--|:--|:--|
+| EleutherAI · lm-evaluation-harness | Released cache reliability; merged CLI and task correctness; active evaluation, registry, tokenizer, retry, aggregation, and backend fixes | [All authored PRs](https://github.com/EleutherAI/lm-evaluation-harness/pulls?q=is%3Apr+author%3Asdivyanshu90) |
+| Experiential | Merged provider pagination; active gateway, ingestion, credential, cancellation, timeout, typing, and error-contract implementations | [All authored PRs](https://github.com/experientiallabs/experiential/pulls?q=is%3Apr+author%3Asdivyanshu90) |
+| OpenCode | Authored fixes across TUI state, WebSockets, Unicode, filesystem portability, Git semantics, cache identity, authentication, and pagination | [All authored PRs](https://github.com/anomalyco/opencode/pulls?q=is%3Apr+author%3Asdivyanshu90) |
+| Zulip | Merged non-UTF-8 access-token validation | [#40241](https://github.com/zulip/zulip/pull/40241) |
+| Sequre | Authored Conv2D, CNN, pooling, and secure-training implementations | [#33](https://github.com/0xTCG/sequre/pull/33) · [#35](https://github.com/0xTCG/sequre/pull/35) · [#42](https://github.com/0xTCG/sequre/pull/42) |
 
-Contributions in the ecosystem of an open-source software-vulnerability
-database and tooling platform.
+Closed PRs in these repositories remain linked as authored implementations when closure came from automation, contribution policy, supersession, or another non-technical path. Upstream merge status is recorded separately wherever applicable.
 
-### NeuralEnsemble / PyNN
+## Earlier tracks
 
-Earlier contributions to scientific-computing software and its
-developer/documentation experience.
+| Ecosystem | Selected authored artifacts | Signal |
+|:--|:--|:--|
+| Processing Foundation · p5.js Web Editor | [#2395](https://github.com/processing/p5.js-web-editor/pull/2395) · [#2381](https://github.com/processing/p5.js-web-editor/pull/2381) · [#2331](https://github.com/processing/p5.js-web-editor/pull/2331) · [#2312](https://github.com/processing/p5.js-web-editor/pull/2312) | Product and accessibility engineering · `MERGED` |
+| AboutCode · VulnerableCode | [#1392](https://github.com/aboutcode-org/vulnerablecode/pull/1392) | Vulnerability-data importer metadata · `MERGED` |
+| NeuralEnsemble · PyNN | [#813](https://github.com/NeuralEnsemble/PyNN/pull/813) | Scientific documentation interface · `MERGED` |
+| ML4SCI | Electron/photon classification · quark/gluon classification · graph-based detector experiments | Scientific ML research track |
 
----
+## Operating sequence
 
-## Scientific Open Source / Research
+```text
+OBSERVE    Find the behavior that violates the system's implied contract.
+ISOLATE    Reduce it to the smallest reproducible boundary crossing.
+REPAIR     Implement the fix with regression evidence at that boundary.
+VERIFY     Track the engineering outcome independently from repository process.
+```
 
-### ML4SCI
-
-Scientific machine-learning work in particle physics, including:
-
-- electron/photon classification
-- quark/gluon classification
-- graph-based detector-data experiments
-
-Where work exists as direct upstream artifacts, those links belong in the
-ledger below.
-
----
-
-## Contribution Ledger
-
-| Project | Artifact | Status | Area | Contribution |
-|---|---|---|---|---|
-| EleutherAI/lm-evaluation-harness | #4047 | Released | Caching | Cache parent-directory reliability |
-| EleutherAI/lm-evaluation-harness | ... | Merged | CLI | Parsing/type semantics |
-| EleutherAI/lm-evaluation-harness | #4005 | Resolved upstream | Multimodal caching | Reproduced serialization failure |
-| Mastra | ... | Pending release | Workflow/Evals | Correctness issue |
-| Experiential | ... | Open PR | Gateway | Reliability fix |
-| OpenCode | ... | Open | Tooling | Boundary/correctness issue |
-| Sequre | #42 | Open PR | Secure ML | CNN/MPC implementation |
-| p5.js Web Editor | ... | Merged | Product engineering | Historical OSS contribution |
-| VulnerableCode | ... | Merged | Security tooling | Historical OSS contribution |
-| PyNN | ... | Merged | Scientific software | Historical OSS contribution |
+<p align="center">
+  <sub><code>RECORDER SYNC · 2026-10-09 · END OF CAPTURE</code></sub>
+</p>

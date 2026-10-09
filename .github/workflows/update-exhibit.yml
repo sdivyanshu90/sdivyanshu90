@@ -1,0 +1,39 @@
+name: Update current exhibition
+
+on:
+  schedule:
+    - cron: "17 3 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: profile-exhibition
+  cancel-in-progress: true
+
+jobs:
+  curate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Open the museum
+        uses: actions/checkout@v4
+
+      - name: Prepare the conservation lab
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Select the current exhibition
+        run: node scripts/update-exhibit.mjs
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Update the gallery wall
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/now-on-view-dark.svg assets/now-on-view-light.svg
+          git diff --cached --quiet && exit 0
+          git commit -m "Update current museum exhibition"
+          git push

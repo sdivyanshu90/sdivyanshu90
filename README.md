@@ -1,4 +1,6 @@
 <picture>
+  <source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="./assets/museum-ticket-mobile-dark.svg">
+  <source media="(prefers-color-scheme: light) and (max-width: 600px)" srcset="./assets/museum-ticket-mobile-light.svg">
   <source media="(prefers-color-scheme: dark)" srcset="./assets/museum-ticket-dark.svg">
   <source media="(prefers-color-scheme: light)" srcset="./assets/museum-ticket-light.svg">
   <img alt="Admission ticket to Divanshu Sharma's Museum of Edge Cases" src="./assets/museum-ticket-light.svg" width="100%">
@@ -18,6 +20,8 @@
 
 ## Visitor orientation
 
+> **I don’t collect technologies. I collect the assumptions that failed.**
+
 Welcome to a collection about the exact moment a clean abstraction meets an uncooperative world.
 
 Every gallery begins with something that worked: a model, a cache, a provider, a distributed job, a generated program. The exhibit begins when reality supplies the input its designer did not imagine. My work is to preserve that failure, understand the boundary it crossed, and build the system that survives it.
@@ -27,12 +31,29 @@ Every gallery begins with something that worked: a model, a cache, a provider, a
 ## Visitor map
 
 <picture>
+  <source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="./assets/museum-map-mobile-dark.svg">
+  <source media="(prefers-color-scheme: light) and (max-width: 600px)" srcset="./assets/museum-map-mobile-light.svg">
   <source media="(prefers-color-scheme: dark)" srcset="./assets/museum-map-dark.svg">
   <source media="(prefers-color-scheme: light)" srcset="./assets/museum-map-light.svg">
   <img alt="Floor plan for six galleries around the central Reality Atrium" src="./assets/museum-map-light.svg" width="100%">
 </picture>
 
 The map is arranged around the museum’s permanent stress test: **Reality**. Open any gallery placard below to inspect the artifact.
+
+<p align="center">
+  <sub><strong>DIRECT ACCESS</strong></sub><br>
+  <a href="https://github.com/sdivyanshu90/EvalForge"><code>01 EVALUATION</code></a>
+  &nbsp;·&nbsp;
+  <a href="https://github.com/sdivyanshu90/neural-bisect"><code>02 DEBUGGING</code></a>
+  &nbsp;·&nbsp;
+  <a href="https://github.com/sdivyanshu90/FromScratchQuant"><code>03 EFFICIENCY</code></a>
+  &nbsp;·&nbsp;
+  <a href="https://github.com/sdivyanshu90/build-your-own-ai-gateway"><code>04 ROUTING</code></a>
+  &nbsp;·&nbsp;
+  <a href="https://github.com/sdivyanshu90/build-your-own-distributed-training"><code>05 SCALE</code></a>
+  &nbsp;·&nbsp;
+  <a href="https://github.com/sdivyanshu90/build-your-own-code-interpreter"><code>06 SECURITY</code></a>
+</p>
 
 ## The galleries
 
@@ -147,7 +168,17 @@ Different codebases keep producing these same six exhibits. The syntax changes. 
 
 ## The conservation lab
 
-The public galleries show finished systems. Behind them is the repair archive: released fixes, merged patches, active investigations, and complete implementations closed by automated triage or contribution-process rules.
+The public galleries show finished systems. Behind them is the repair archive: released fixes, merged patches, active investigations, and complete implementations closed by automated triage or contribution-process rules. This wall label updates itself from public GitHub evidence whenever the newest open restoration changes.
+
+<a href="https://github.com/pulls?q=is%3Apr+author%3Asdivyanshu90+is%3Aopen">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/now-on-view-dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="./assets/now-on-view-light.svg">
+    <img alt="The most recently updated open pull request authored by Divanshu Sharma" src="./assets/now-on-view-light.svg" width="100%">
+  </picture>
+</a>
+
+**PERMANENT ACQUISITION · OBJECT 001** — [A cache parent directory that existed only in theory](https://github.com/EleutherAI/lm-evaluation-harness/pull/4047), restored upstream and released in [`lm-evaluation-harness v0.4.13`](https://github.com/EleutherAI/lm-evaluation-harness/releases/tag/v0.4.13).
 
 Each record preserves four facts independently:
 
